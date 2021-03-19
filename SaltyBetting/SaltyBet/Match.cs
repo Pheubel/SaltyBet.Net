@@ -33,7 +33,9 @@ namespace SaltyBet
         public static bool IsSameMatch(Match left, Match right)
         {
             return left.GameMode == right.GameMode &&
-                left.MatchesUntilNextMode == right.MatchesUntilNextMode &&
+                ((left.Status == MatchStatus.TeamBlueWon || left.Status == MatchStatus.TeamRedWon) ^ (left.Status == MatchStatus.TeamBlueWon || left.Status == MatchStatus.TeamRedWon)) == false ?
+                    left.MatchesUntilNextMode == right.MatchesUntilNextMode :
+                    Math.Abs(left.MatchesUntilNextMode - right.MatchesUntilNextMode) == 1 &&
                 left.TeamRedName == right.TeamRedName &&
                 left.TeamBlueName == right.TeamBlueName;
         }
