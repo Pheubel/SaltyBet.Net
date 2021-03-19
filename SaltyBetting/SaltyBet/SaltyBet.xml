@@ -9,6 +9,18 @@
             Determines the gamemode being broadcasted.
             </summary>
         </member>
+        <member name="F:SaltyBet.GameMode.Unknown">
+            <summary> The game mode is not know at this time.</summary>
+        </member>
+        <member name="F:SaltyBet.GameMode.Matchmaking">
+            <summary> Fighters get picked at random for 1 on 1 matches.</summary>
+        </member>
+        <member name="F:SaltyBet.GameMode.Tournament">
+            <summary> Preselected fighters fight 1 on 1 in an elimination style tournament until 1 is left.</summary>
+        </member>
+        <member name="F:SaltyBet.GameMode.Exhibition">
+            <summary> Fights requested by viewers that can star any fighter they choose.</summary>
+        </member>
         <member name="T:SaltyBet.NewMatchHandler">
             <summary>
             Handles when a new match with new characters is created and the bets are open.
@@ -30,6 +42,12 @@
             <param name="match"> The current match being on display.</param>
             <param name="teamRedBet"> The total amount of salt bucks bet on the red team.</param>
             <param name="teamBlueBet"> The total amount of salt bucks bet on the blue team.</param>
+        </member>
+        <member name="T:SaltyBet.GameModeStartedHandler">
+            <summary>
+            Handles when a new game mode has started.
+            </summary>
+            <param name="gameMode"> The game mode that has started.</param>
         </member>
         <member name="T:SaltyBet.ISaltyBetClient">
             <summary>
@@ -72,6 +90,12 @@
             </summary>
             <param name="matchFinishedHandler"> The handler for when the match has been finished and bets are paid out.</param>
         </member>
+        <member name="M:SaltyBet.ISaltyBetClient.AddOnGameModeStarted(SaltyBet.GameModeStartedHandler)">
+            <summary>
+            Adds the handler for when a new game mode has been loaded in.
+            </summary>
+            <param name="modeStartedHandler"> The handler for when a gamemode has been loaded in.</param>
+        </member>
         <member name="M:SaltyBet.ISaltyBetClient.RemoveOnNewMatchHandler(SaltyBet.NewMatchHandler)">
             <summary>
             Removes the handler for when a new match with new characters is created and the bets are open.
@@ -89,6 +113,12 @@
             Removes the handler for when the match has been finished and bets are paid out.
             </summary>
             <param name="matchFinishedHandler"> The handler for when the match has been finished and bets are paid out.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.RemoveOnGameModeStarted(SaltyBet.GameModeStartedHandler)">
+            <summary>
+            Adds the handler for when a new game mode has been loaded in.
+            </summary>
+            <param name="modeStartedHandler"> The handler for when a gamemode has been loaded in.</param>
         </member>
         <member name="T:SaltyBet.MatchStatus">
             <summary>
@@ -121,6 +151,11 @@
         <member name="P:SaltyBet.SaltyBetClient.HttpClient">
             <summary>
             The HTTP client used to fetch the current state of saltybet.
+            </summary>
+        </member>
+        <member name="P:SaltyBet.SaltyBetClient.CurrentMatch">
+            <summary>
+            The latest match data received from salty bet.
             </summary>
         </member>
         <member name="M:SaltyBet.SaltyBetClient.#ctor(System.Net.Http.HttpClient,System.Action{System.Net.WebSockets.ClientWebSocketOptions})">
@@ -170,6 +205,12 @@
             <inheritdoc/>
         </member>
         <member name="M:SaltyBet.SaltyBetClient.RemoveOnMatchFinishedHandler(SaltyBet.MatchFinishedHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.AddOnGameModeStarted(SaltyBet.GameModeStartedHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.RemoveOnGameModeStarted(SaltyBet.GameModeStartedHandler)">
             <inheritdoc/>
         </member>
         <member name="T:SaltyBet.SaltyBetClient.ClientState">
