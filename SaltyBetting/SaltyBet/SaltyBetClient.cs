@@ -160,11 +160,11 @@ namespace SaltyBet
                         break;
 
                     case "p1total":
-                        player1Bet = ulong.Parse(property.Value.GetString()!, NumberStyles.AllowThousands);
+                        player1Bet = ulong.Parse(property.Value.GetString()!, NumberStyles.AllowThousands, CultureInfo.InvariantCulture.NumberFormat);
                         break;
 
                     case "p2total":
-                        player2Bet = ulong.Parse(property.Value.GetString()!, NumberStyles.AllowThousands);
+                        player2Bet = ulong.Parse(property.Value.GetString()!, NumberStyles.AllowThousands, CultureInfo.InvariantCulture.NumberFormat);
                         break;
 
                     case "remaining":
@@ -195,7 +195,7 @@ namespace SaltyBet
                     // assume the previous mode was exhibition, when no matches are requested before the tournament exhibitions will be skipped 
                     // but it looks unlikely to get info about the edge case from the context of a single message
                     gameMode = GameMode.Exhibition;
-                    matchesUntilNextMode = 1;
+                    matchesUntilNextMode = 0;
                 }
                 else
                 {
@@ -205,7 +205,7 @@ namespace SaltyBet
             // determine if final round of matchmaking
             else if (remaining.StartsWith("Tournament mode will be activated"))
             {
-                matchesUntilNextMode = (newStatus == MatchStatus.TeamBlueWon || newStatus == MatchStatus.TeamRedWon) ? 2 : 1;
+                matchesUntilNextMode = 1;
                 gameMode = GameMode.Matchmaking;
             }
             else if (remaining.EndsWith("left in the bracket!"))
@@ -213,7 +213,7 @@ namespace SaltyBet
                 matchesUntilNextMode = (byte)(byte.Parse(remaining.AsSpan(0, remaining.IndexOf(' '))) - 1);
                 if ((newStatus == MatchStatus.TeamBlueWon || newStatus == MatchStatus.TeamRedWon) && matchesUntilNextMode == 15)
                 {
-                    matchesUntilNextMode = 1;
+                    matchesUntilNextMode = 0;
                     gameMode = GameMode.Matchmaking;
                 }
                 else
@@ -233,7 +233,7 @@ namespace SaltyBet
                 matchesUntilNextMode = byte.Parse(remaining.AsSpan(0, remaining.IndexOf(' ')));
                 if ((newStatus == MatchStatus.TeamBlueWon || newStatus == MatchStatus.TeamRedWon) && alert == "Exhibition mode start!")
                 {
-                    matchesUntilNextMode = 1;
+                    matchesUntilNextMode = 0;
                     gameMode = GameMode.Tournament;
                 }
                 else
@@ -244,13 +244,11 @@ namespace SaltyBet
             // determine if final exhibition match
             else if (remaining == "Matchmaking mode will be activated after the next exhibition match!")
             {
-                matchesUntilNextMode = (newStatus == MatchStatus.TeamBlueWon || newStatus == MatchStatus.TeamRedWon) ? 2 : 1;
+                matchesUntilNextMode = 1;
                 gameMode = GameMode.Exhibition;
             }
 
-
-
-            Match match = new Match
+            var match = new Match
             {
                 Status = newStatus,
                 TeamRedName = player1,
