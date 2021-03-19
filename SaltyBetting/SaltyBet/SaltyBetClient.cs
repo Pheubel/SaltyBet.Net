@@ -224,7 +224,7 @@ namespace SaltyBet
             // determine if final round of tournament
             else if (remaining.EndsWith("after the tournament!"))
             {
-                matchesUntilNextMode = (newStatus == MatchStatus.TeamBlueWon || newStatus == MatchStatus.TeamRedWon) ? 2 : 1;
+                matchesUntilNextMode = 1;
                 gameMode = GameMode.Tournament;
             }
             // determine if exhibition
