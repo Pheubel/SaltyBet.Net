@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SaltyBet</name>
+    </assembly>
+    <members>
+        <member name="T:SaltyBet.GameMode">
+            <summary>
+            Determines the gamemode being broadcasted.
+            </summary>
+        </member>
+        <member name="T:SaltyBet.NewMatchHandler">
+            <summary>
+            Handles when a new match with new characters is created and the bets are open.
+            </summary>
+            <param name="match"> The current match being on display.</param>
+        </member>
+        <member name="T:SaltyBet.MatchStartedHandler">
+            <summary>
+            Handles when the new match has started and the bets are closed.
+            </summary>
+            <param name="match"> The current match being on display.</param>
+            <param name="teamRedBet"> The total amount of salt bucks bet on the red team.</param>
+            <param name="teamBlueBet"> The total amount of salt bucks bet on the blue team.</param>
+        </member>
+        <member name="T:SaltyBet.MatchFinishedHandler">
+            <summary>
+            Handles when the match has been finished and bets are paid out.
+            </summary>
+            <param name="match"> The current match being on display.</param>
+            <param name="teamRedBet"> The total amount of salt bucks bet on the red team.</param>
+            <param name="teamBlueBet"> The total amount of salt bucks bet on the blue team.</param>
+        </member>
+        <member name="T:SaltyBet.ISaltyBetClient">
+            <summary>
+            A client used to listen to the match feed from saltybet matches.
+            </summary>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.StartConnectionAsync">
+            <summary>
+            Starts the client and listen to incoming messages.
+            </summary>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.StopConnectionAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String)">
+            <summary>
+            Stop listening to incoing messages.
+            </summary>
+            <param name="status"> Signals how the websocket has been closed.</param>
+            <param name="description"> The description of how the websocket has been closed.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.GetCurrentMatchStatus">
+            <summary>
+            Gets the Match status from the moment the status was requested.
+            </summary>
+            <returns> The Match status from the moment the status was requested.</returns>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.AddOnNewMatchHandler(SaltyBet.NewMatchHandler)">
+            <summary>
+            Adds the handler for when a new match with new characters is created and the bets are open.
+            </summary>
+            <param name="newMatchHandler"> The handler for when a new match is created.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.AddOnMatchStartedHandler(SaltyBet.MatchStartedHandler)">
+            <summary>
+            Adds the handler for when the new match has started and the bets are closed.
+            </summary>
+            <param name="matchStartedHandler"> The handler for when the new match has started and the bets are closed.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.AddOnMatchFinishedHandler(SaltyBet.MatchFinishedHandler)">
+            <summary>
+            Adds the handler for when the match has been finished and bets are paid out.
+            </summary>
+            <param name="matchFinishedHandler"> The handler for when the match has been finished and bets are paid out.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.RemoveOnNewMatchHandler(SaltyBet.NewMatchHandler)">
+            <summary>
+            Removes the handler for when a new match with new characters is created and the bets are open.
+            </summary>
+            <param name="newMatchHandler"> The handler for when a new match is created.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.RemoveOnMatchStartedHandler(SaltyBet.MatchStartedHandler)">
+            <summary>
+            Removes the handler for when the new match has started and the bets are closed.
+            </summary>
+            <param name="matchStartedHandler"> The handler for when the new match has started and the bets are closed.</param>
+        </member>
+        <member name="M:SaltyBet.ISaltyBetClient.RemoveOnMatchFinishedHandler(SaltyBet.MatchFinishedHandler)">
+            <summary>
+            Removes the handler for when the match has been finished and bets are paid out.
+            </summary>
+            <param name="matchFinishedHandler"> The handler for when the match has been finished and bets are paid out.</param>
+        </member>
+        <member name="T:SaltyBet.MatchStatus">
+            <summary>
+            Determines the status of the match.
+            </summary>
+        </member>
+        <member name="F:SaltyBet.MatchStatus.Unknown">
+            <summary> The match's status cannot be determined.</summary>
+        </member>
+        <member name="F:SaltyBet.MatchStatus.TeamRedWon">
+            <summary> Player one won the match.</summary>
+        </member>
+        <member name="F:SaltyBet.MatchStatus.TeamBlueWon">
+            <summary> Player two won the match.</summary>
+        </member>
+        <member name="F:SaltyBet.MatchStatus.BetsOpen">
+            <summary> Bets can be placed on the current match.</summary>
+        </member>
+        <member name="F:SaltyBet.MatchStatus.BetsClosed">
+            <summary> Bets can not be placed on the current match as it has started.</summary>
+        </member>
+        <member name="F:SaltyBet.MatchStatus.Draw">
+            <summary> The match has ended in a state that has no winners either by two opponents being left with the same HP or a system reset.</summary>
+        </member>
+        <member name="T:SaltyBet.SaltyBetClient">
+            <summary>
+            A standard implementation of a client used to listen to the feed of saltybet matches.
+            </summary>
+        </member>
+        <member name="P:SaltyBet.SaltyBetClient.HttpClient">
+            <summary>
+            The HTTP client used to fetch the current state of saltybet.
+            </summary>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.#ctor(System.Net.Http.HttpClient,System.Action{System.Net.WebSockets.ClientWebSocketOptions})">
+            <summary> Creates an instance of the <see cref="T:SaltyBet.SaltyBetClient"/> class.</summary>
+            <param name="httpClient"> The underlying client uused for calling saltybet endpoints.</param>
+            <param name="options"> The additional options to be applied to the underlying websocket.</param>
+            <exception cref="T:System.ArgumentNullException" />
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.StartConnectionAsync">
+            <inheritdoc/>
+            <exception cref="T:System.ObjectDisposedException" />
+            <exception cref="T:System.InvalidOperationException" />
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.StartPingInterval">
+            <summary>
+            Starts the internal ping timer to keep the socket connection alive.
+            </summary>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.StopConnectionAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.GetCurrentMatchStatus">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.ListenAsync(System.Threading.CancellationToken)">
+            <summary>
+            Starts listening to the websocket feed.
+            </summary>
+            <param name="ct"></param>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.AddOnNewMatchHandler(SaltyBet.NewMatchHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.AddOnMatchStartedHandler(SaltyBet.MatchStartedHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.AddOnMatchFinishedHandler(SaltyBet.MatchFinishedHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.RemoveOnNewMatchHandler(SaltyBet.NewMatchHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.RemoveOnMatchStartedHandler(SaltyBet.MatchStartedHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBetClient.RemoveOnMatchFinishedHandler(SaltyBet.MatchFinishedHandler)">
+            <inheritdoc/>
+        </member>
+        <member name="T:SaltyBet.SaltyBetClient.ClientState">
+            <summary>
+            Determines the current state the client is in.
+            </summary>
+        </member>
+        <member name="T:SaltyBet.SaltyBettingClient">
+            <summary>
+            A standard implementation of a client used to place bets on saltybet matches. Use at your own risk.
+            </summary>
+        </member>
+        <member name="P:SaltyBet.SaltyBettingClient.IsLoggedIn">
+            <summary>
+            Indicates if the client is logged into saltybet and can be used for placign bets.
+            </summary>
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.#ctor(System.Net.Http.HttpClient,System.Action{System.Net.WebSockets.ClientWebSocketOptions})">
+            <summary>
+            
+            </summary>
+            <param name="httpClient"></param>
+            <param name="options"></param>
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.StartConnectionAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.StopConnectionAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.GetBalance">
+            <inheritdoc />
+            <exception cref="T:System.InvalidOperationException" />
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.GetWager">
+            <summary> Get the current ammount being wagered.</summary>
+            <returns> The current ammount being wagered, 0 if no bet is placed.</returns>
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.PlaceBetAsync(System.Boolean,System.UInt64)">
+            <inheritdoc/>
+            <exception cref="T:System.InvalidOperationException" />
+            <exception cref="T:System.ArgumentOutOfRangeException" />
+        </member>
+        <member name="M:SaltyBet.SaltyBettingClient.GetRankAsync">
+            <inheritdoc/>
+            <exception cref="T:System.InvalidOperationException" />
+        </member>
+    </members>
+</doc>
