@@ -46,7 +46,7 @@ namespace SaltyBet
         /// </summary>
         /// <param name="status"> Signals how the websocket has been closed.</param>
         /// <param name="description"> The description of how the websocket has been closed.</param>
-        Task StopConnectionAsync(WebSocketCloseStatus status = WebSocketCloseStatus.NormalClosure, string description = null);
+        Task StopConnectionAsync(WebSocketCloseStatus status = WebSocketCloseStatus.NormalClosure, string? description = null);
 
         /// <summary>
         /// Gets the Match status from the moment the status was requested.
