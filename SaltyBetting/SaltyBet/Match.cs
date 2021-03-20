@@ -21,22 +21,16 @@ namespace SaltyBet
         /// <summary> The ammount of matches until the next game mode gets loaded.</summary>
         public byte MatchesUntilNextMode { get; init; }
 
-        // todo: change constructor if the init keyword can be enforced upon creation of an instance.
-        internal Match()
-        {
-            TeamRedName = null!;
-            TeamBlueName = null!;
-        }
-
         /// <summary>
         /// Creates an instance of the <see cref="Match"/> class.
         /// </summary>
-        /// <param name="status"> The current status of the match.</param>
         /// <param name="gameMode"> The current game mode of the match.</param>
+        /// <param name="status"> The current status of the match.</param>
+        /// <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
         /// <param name="teamRedName"> The name of the team representing the red team.</param>
         /// <param name="teamBlueName"> The name of the team representing the blue team.</param>
-        /// <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
-        public Match(MatchStatus status, GameMode gameMode, string teamRedName, string teamBlueName, byte matchesUntilNextMode)
+        /// <exception cref="ArgumentNullException" />
+        public Match(GameMode gameMode, MatchStatus status, byte matchesUntilNextMode, string teamRedName, string teamBlueName)
         {
             Status = status;
             GameMode = gameMode;

@@ -248,14 +248,13 @@ namespace SaltyBet
                 gameMode = GameMode.Exhibition;
             }
 
-            var match = new Match
-            {
-                Status = newStatus,
-                TeamRedName = player1,
-                TeamBlueName = player2,
-                GameMode = gameMode,
-                MatchesUntilNextMode = matchesUntilNextMode
-            };
+            var match = new Match(
+                gameMode: gameMode,
+                status: newStatus,
+                matchesUntilNextMode: matchesUntilNextMode,
+                teamRedName: player1,
+                teamBlueName: player2
+            );
 
             // make sure match data is new
             if (CurrentMatch != null && CurrentMatch.Status == match.Status && CurrentMatch.IsSameMatch(match))
