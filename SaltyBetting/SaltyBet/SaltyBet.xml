@@ -120,6 +120,53 @@
             </summary>
             <param name="modeStartedHandler"> The handler for when a gamemode has been loaded in.</param>
         </member>
+        <member name="T:SaltyBet.Match">
+            <summary>
+            A snapshot of the current state of a match on saltybet.
+            </summary>
+        </member>
+        <member name="P:SaltyBet.Match.Status">
+            <summary> The current status of the match.</summary>
+        </member>
+        <member name="P:SaltyBet.Match.GameMode">
+            <summary> The current game mode of the match.</summary>
+        </member>
+        <member name="P:SaltyBet.Match.TeamRedName">
+            <summary> The name of the team representing the red team.</summary>
+            <remarks> During matchmaking and tournaments this is often the character being played.</remarks>
+        </member>
+        <member name="P:SaltyBet.Match.TeamBlueName">
+            <summary> The name of the team representing the blue team.</summary>
+            <remarks> During matchmaking and tournaments this is often the character being played.</remarks>
+        </member>
+        <member name="P:SaltyBet.Match.MatchesUntilNextMode">
+            <summary> The ammount of matches until the next game mode gets loaded.</summary>
+        </member>
+        <member name="M:SaltyBet.Match.#ctor(SaltyBet.MatchStatus,SaltyBet.GameMode,System.String,System.String,System.Byte)">
+            <summary>
+            Creates an instance of the <see cref="T:SaltyBet.Match"/> class.
+            </summary>
+            <param name="status"> The current status of the match.</param>
+            <param name="gameMode"> The current game mode of the match.</param>
+            <param name="teamRedName"> The name of the team representing the red team.</param>
+            <param name="teamBlueName"> The name of the team representing the blue team.</param>
+            <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
+        </member>
+        <member name="M:SaltyBet.Match.IsSameMatch(SaltyBet.Match)">
+            <summary>
+            Determines if two match snapshots come from the same match.
+            </summary>
+            <param name="other"> The other snapshot to compare it to.</param>
+            <returns> True if both match snapshots come from the same match.</returns>
+        </member>
+        <member name="M:SaltyBet.Match.IsSameMatch(SaltyBet.Match,SaltyBet.Match)">
+            <summary>
+            Determines if two match snapshots come from the same match.
+            </summary>
+            <param name="left"> A snapshot from a match.</param>
+            <param name="right"> The other match snapshot to compare it to.</param>
+            <returns> True if both match snapshots come from the same match.</returns>
+        </member>
         <member name="T:SaltyBet.MatchStatus">
             <summary>
             Determines the status of the match.

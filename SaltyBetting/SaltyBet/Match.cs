@@ -3,20 +3,39 @@ using System.Runtime.CompilerServices;
 
 namespace SaltyBet
 {
+    /// <summary>
+    /// A snapshot of the current state of a match on saltybet.
+    /// </summary>
     public class Match
     {
+        /// <summary> The current status of the match.</summary>
         public MatchStatus Status { get; init; }
+        /// <summary> The current game mode of the match.</summary>
         public GameMode GameMode { get; init; }
+        /// <summary> The name of the team representing the red team.</summary>
+        /// <remarks> During matchmaking and tournaments this is often the character being played.</remarks>
         public string TeamRedName { get; init; }
+        /// <summary> The name of the team representing the blue team.</summary>
+        /// <remarks> During matchmaking and tournaments this is often the character being played.</remarks>
         public string TeamBlueName { get; init; }
+        /// <summary> The ammount of matches until the next game mode gets loaded.</summary>
         public byte MatchesUntilNextMode { get; init; }
 
+        // todo: change constructor if the init keyword can be enforced upon creation of an instance.
         internal Match()
         {
             TeamRedName = null!;
             TeamBlueName = null!;
         }
 
+        /// <summary>
+        /// Creates an instance of the <see cref="Match"/> class.
+        /// </summary>
+        /// <param name="status"> The current status of the match.</param>
+        /// <param name="gameMode"> The current game mode of the match.</param>
+        /// <param name="teamRedName"> The name of the team representing the red team.</param>
+        /// <param name="teamBlueName"> The name of the team representing the blue team.</param>
+        /// <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
         public Match(MatchStatus status, GameMode gameMode, string teamRedName, string teamBlueName, byte matchesUntilNextMode)
         {
             Status = status;
@@ -26,9 +45,20 @@ namespace SaltyBet
             MatchesUntilNextMode = matchesUntilNextMode;
         }
 
+        /// <summary>
+        /// Determines if two match snapshots come from the same match.
+        /// </summary>
+        /// <param name="other"> The other snapshot to compare it to.</param>
+        /// <returns> True if both match snapshots come from the same match.</returns>
         public bool IsSameMatch(Match other) =>
             IsSameMatch(this, other);
 
+        /// <summary>
+        /// Determines if two match snapshots come from the same match.
+        /// </summary>
+        /// <param name="left"> A snapshot from a match.</param>
+        /// <param name="right"> The other match snapshot to compare it to.</param>
+        /// <returns> True if both match snapshots come from the same match.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsSameMatch(Match left, Match right)
         {
