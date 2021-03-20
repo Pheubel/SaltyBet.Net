@@ -151,6 +151,7 @@
             <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
             <param name="teamRedName"> The name of the team representing the red team.</param>
             <param name="teamBlueName"> The name of the team representing the blue team.</param>
+            <exception cref="T:System.ArgumentNullException" />
         </member>
         <member name="M:SaltyBet.Match.IsSameMatch(SaltyBet.Match)">
             <summary>
@@ -231,10 +232,11 @@
             <summary>
             Starts listening to the websocket feed.
             </summary>
-            <param name="ct"></param>
+            <param name="ct"> A cancelation token used to propagate that this opperation should be canceled.</param>
         </member>
         <member name="M:SaltyBet.SaltyBetClient.Dispose">
             <inheritdoc/>
+            <exception cref="T:System.ObjectDisposedException" />
         </member>
         <member name="M:SaltyBet.SaltyBetClient.AddOnNewMatchHandler(SaltyBet.NewMatchHandler)">
             <inheritdoc/>

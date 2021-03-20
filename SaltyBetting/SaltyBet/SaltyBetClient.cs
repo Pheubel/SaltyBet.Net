@@ -107,7 +107,7 @@ namespace SaltyBet
         /// <summary>
         /// Starts listening to the websocket feed.
         /// </summary>
-        /// <param name="ct"></param>
+        /// <param name="ct"> A cancelation token used to propagate that this opperation should be canceled.</param>
         private async Task ListenAsync(CancellationToken ct)
         {
             byte[] messageBuffer = new byte[256];
