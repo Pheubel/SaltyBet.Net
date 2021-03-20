@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SaltyBet
+namespace SaltyBet.Betting
 {
     /// <summary>
     /// A standard implementation of a client used to place bets on saltybet matches. Use at your own risk.
@@ -16,7 +16,7 @@ namespace SaltyBet
     public sealed class SaltyBettingClient : SaltyBetClient, IBettingClient
     {
         /// <summary>
-        /// Indicates if the client is logged into saltybet and can be used for placign bets.
+        /// Indicates if the client is logged into saltybet and can be used for placing bets.
         /// </summary>
         public bool IsLoggedIn { get; private set; }
 

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaltyBetting", "SaltyBetting\SaltyBetting.csproj", "{6D5D520A-F902-44E9-9C28-475FE3D2986C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaltyBetting", "SaltyBetting\SaltyBetting.csproj", "{6D5D520A-F902-44E9-9C28-475FE3D2986C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaltyBet", "SaltyBet\SaltyBet.csproj", "{2DBABEE6-C3AD-4151-AC54-03FBADD6CA39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaltyBet", "SaltyBet\SaltyBet.csproj", "{2DBABEE6-C3AD-4151-AC54-03FBADD6CA39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaltyBet.Betting", "SaltyBet.Betting\SaltyBet.Betting.csproj", "{1952CC2E-3CD5-4D6B-B817-98431A594951}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2DBABEE6-C3AD-4151-AC54-03FBADD6CA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DBABEE6-C3AD-4151-AC54-03FBADD6CA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DBABEE6-C3AD-4151-AC54-03FBADD6CA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1952CC2E-3CD5-4D6B-B817-98431A594951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1952CC2E-3CD5-4D6B-B817-98431A594951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1952CC2E-3CD5-4D6B-B817-98431A594951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1952CC2E-3CD5-4D6B-B817-98431A594951}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
