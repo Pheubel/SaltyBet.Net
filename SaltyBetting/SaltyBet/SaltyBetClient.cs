@@ -87,7 +87,7 @@ namespace SaltyBet
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"ran into issues while pinging the console: {ex.Message}");
+                    Console.WriteLine($"ran into issues while pinging the socket server: {ex.Message}");
                 }
             }, null, PingInterval, PingInterval);
         }
@@ -124,10 +124,12 @@ namespace SaltyBet
 
         private async Task UpdateStateAsync()
         {
+            // get the current state as json from saltybet
             var response = await HttpClient.GetStringAsync(CurrentStateAdress);
 
             using var matchState = System.Text.Json.JsonDocument.Parse(response);
 
+            // deserialize the data
             MatchStatus newStatus = MatchStatus.Unknown;
             string player1 = null!;
             string player2 = null!;
@@ -182,9 +184,6 @@ namespace SaltyBet
 
             GameMode gameMode = GameMode.Unknown;
             byte matchesUntilNextMode = default;
-
-
-
 
             // determine the game mode
             if (remaining.EndsWith("next tournament!"))
@@ -296,6 +295,7 @@ namespace SaltyBet
         }
 
         /// <inheritdoc/>
+        /// <exception cref="ObjectDisposedException" />
         public void Dispose()
         {
             if (_clientState == ClientState.Disposed)

@@ -142,15 +142,15 @@
         <member name="P:SaltyBet.Match.MatchesUntilNextMode">
             <summary> The ammount of matches until the next game mode gets loaded.</summary>
         </member>
-        <member name="M:SaltyBet.Match.#ctor(SaltyBet.MatchStatus,SaltyBet.GameMode,System.String,System.String,System.Byte)">
+        <member name="M:SaltyBet.Match.#ctor(SaltyBet.GameMode,SaltyBet.MatchStatus,System.Byte,System.String,System.String)">
             <summary>
             Creates an instance of the <see cref="T:SaltyBet.Match"/> class.
             </summary>
-            <param name="status"> The current status of the match.</param>
             <param name="gameMode"> The current game mode of the match.</param>
+            <param name="status"> The current status of the match.</param>
+            <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
             <param name="teamRedName"> The name of the team representing the red team.</param>
             <param name="teamBlueName"> The name of the team representing the blue team.</param>
-            <param name="matchesUntilNextMode"> The ammount of matches until the next game mode gets loaded.</param>
         </member>
         <member name="M:SaltyBet.Match.IsSameMatch(SaltyBet.Match)">
             <summary>
