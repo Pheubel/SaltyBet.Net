@@ -265,45 +265,5 @@
             Determines the current state the client is in.
             </summary>
         </member>
-        <member name="T:SaltyBet.SaltyBettingClient">
-            <summary>
-            A standard implementation of a client used to place bets on saltybet matches. Use at your own risk.
-            </summary>
-        </member>
-        <member name="P:SaltyBet.SaltyBettingClient.IsLoggedIn">
-            <summary>
-            Indicates if the client is logged into saltybet and can be used for placign bets.
-            </summary>
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.#ctor(System.Net.Http.HttpClient,System.Action{System.Net.WebSockets.ClientWebSocketOptions})">
-            <summary>
-            
-            </summary>
-            <param name="httpClient"></param>
-            <param name="options"></param>
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.StartConnectionAsync">
-            <inheritdoc/>
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.StopConnectionAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String)">
-            <inheritdoc/>
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.GetBalance">
-            <inheritdoc />
-            <exception cref="T:System.InvalidOperationException" />
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.GetWager">
-            <summary> Get the current ammount being wagered.</summary>
-            <returns> The current ammount being wagered, 0 if no bet is placed.</returns>
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.PlaceBetAsync(System.Boolean,System.UInt64)">
-            <inheritdoc/>
-            <exception cref="T:System.InvalidOperationException" />
-            <exception cref="T:System.ArgumentOutOfRangeException" />
-        </member>
-        <member name="M:SaltyBet.SaltyBettingClient.GetRankAsync">
-            <inheritdoc/>
-            <exception cref="T:System.InvalidOperationException" />
-        </member>
     </members>
 </doc>
