@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/Pheubel/SaltyBet.Net</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>Pheubel</Authors>
+    <Company />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
