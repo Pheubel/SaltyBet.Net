@@ -6,4 +6,8 @@
     <RootNamespace>Console_Application</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SaltyBet" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>
